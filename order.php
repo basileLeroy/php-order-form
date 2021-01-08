@@ -40,6 +40,51 @@
         <?php 
             pre_r($_POST);
 
+            foreach ($_POST as $key => $input) {
+                if ($input !== "") {
+                    echo '<div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Well done!</h4><br>
+                    <p>Are you sure that you only want to buy that?? I would buy more, you know... I love my pets</p><br><br>
+                    <p>Please make sure that your information is correct:</p><br>';
+                    echo adress();
+                    echo '<p>Check if this is all you selected!</p><hr>';
+                    echo bucketList($products);
+                    echo '</div>';
+                    break;
+
+                }
+            }
+
+            function adress() {
+                foreach ($_POST as $key => $value) {
+                    if ($key === 'street') {
+                        echo $value . ' ';
+                    }
+                    else if ($key === 'streetnumber') {
+                        echo $value . ', ';
+                    }
+                    else if ($key === 'city') {
+                        echo $value . ' ';
+                    }
+                    else if ($key === 'zipcode') {
+                        echo $value . ' ';
+                    }
+                }
+            }
+            function bucketList($item) {
+                $array = $_POST['products'];
+
+                foreach ($array as $index => $value) {
+                    echo '<p class="mb-0" >';
+                    print_r($item[$index]['name']);
+                    echo '</p><br>';
+                    
+                }
+            }
+            
+
+            $_SESSION['street'] = $_POST['street'];
+
             function test_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
@@ -69,12 +114,7 @@
                     </div>';
                 }
             }
-            
-            
-            echo $products['name'];
 
-            
-            
         ?>
 
         <form method="post">
