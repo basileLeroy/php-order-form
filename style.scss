@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: aliceblue;
+
+    hr {
+        width: 75%;
+        margin: auto;
+
+        height: 2px;
+        border-width:0px;
+        color: grey;
+        background-color: grey;
+
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        width: 100vw;
+
+        h1 {
+            font-family: 'Yellowtail', cursive;
+            font-size: 85px;
+
+            width: 90%;
+            text-align: center;
+
+            .title-icon {
+                width: 70px;
+                height: auto;
+                
+            }
+        }
+
+        .company-logo {
+            width: 100px;
+            height: auto;
+            
+        }
+
+
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        padding-top: 5px;
+
+        font-family: 'East Sea Dokdo', cursive;
+        font-size: 40px;
+    }
+
+    .col {
+        margin-top: 25px;
+    }
+
+    .products {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: 100px;
+
+        .product-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+            .product-text {
+                margin-left: 25px;
+            }
+        }
+    }
+
+}
