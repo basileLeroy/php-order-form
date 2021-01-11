@@ -39,38 +39,38 @@
         <?php // Navigation for when you need it ?>
         <?php 
             pre_r($_POST);
-
+            //TODO: Analyse If all inputs are true: correct
+            $formCorrect = true;
             foreach ($_POST as $key => $input) {
-
+                var_dump($input);
+                var_dump($input == "");
                 if ($input == "") {
-                    echo '<div class="alert alert-danger" role="alert">
-                    <h4 class="alert-heading">Look Again!</h4>
-                    <p>Aww... It seems you don\'t love your pets! please fill in all the required info!</p>
-                    <hr>
-                    <p class="mb-0">Be quick about it!!.</p>
-                    </div>';
-                    break;
-
-                }
-
-                for ($correctNum = 1; $input !== ""; $correctNum++) {
-
-                    echo $correctNum;
-                    break;
-
-                } 
-                if ($correctNum == '111111') {
-                    echo '<div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Well done!</h4><br>
-                    <p>Are you sure that you only want to buy that?? I would buy more, you know... I love my pets</p><br><br>
-                    <p>Please make sure that your information is correct:</p><br>';
-                    echo adress();
-                    echo '<p>Check if this is all you selected!</p><hr>';
-                    echo bucketList($products);
-                    echo '</div>';
-                    break;
+                    $formCorrect = false;
                 }
             }
+            var_dump($formCorrect);
+            //TODO: If false: Error message
+            if ($formCorrect == false) {
+                echo '<div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Look Again!</h4>
+                <p>Aww... It seems you don\'t love your pets! please fill in all the required info!</p>
+                <hr>
+                <p class="mb-0">Be quick about it!!.</p>
+                </div>';
+                
+            }
+            //TODO: If true: Succes message
+            if ($formCorrect == true) {
+                echo '<div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Well done!</h4><br>
+                <p>Are you sure that you only want to buy that?? I would buy more, you know... I love my pets</p><br><br>
+                <p>Please make sure that your information is correct:</p><br>';
+                echo adress();
+                echo '<p>Check if this is all you selected!</p><hr>';
+                echo bucketList($products);
+                echo '</div>';
+            }
+
             function adress() {
                 foreach ($_POST as $key => $value) {
                     if ($key === 'street') {
@@ -87,6 +87,7 @@
                     }
                 }
             }
+
             function bucketList($item) {
                 $array = $_POST['products'];
 
@@ -94,10 +95,22 @@
                     echo '<p class="mb-0" >';
                     print_r($item[$index]['name']);
                     echo '</p><br>';
-                    
                 }
             }
-            
+
+            $orderTotal = productprices($products);
+            function productprices($item) {
+                $array = $_POST['products'];
+                $singleOrder = "";
+
+                foreach ($array as $index => $value) {
+                    print_r($item[$index]['price']);
+                    return $singleOrder;
+                }
+
+            }
+            $totalValue += "$singleOrder";
+            echo $totalValue;
 
             $_SESSION['street'] = $_POST['street'];
 
@@ -110,6 +123,7 @@
 
             if (empty($_POST["email"])) {
                 $emailErr = "Email is required";
+                
                 
             } else {
                 $email = test_input($_POST["email"]);
