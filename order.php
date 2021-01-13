@@ -39,6 +39,8 @@
         <?php // Navigation for when you need it ?>
         <?php 
             pre_r($_POST);
+
+            echo  
             //TODO: Analyse If all inputs are true: correct
             $formCorrect = true;
             foreach ($_POST as $key => $input) {

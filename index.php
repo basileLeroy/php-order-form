@@ -9,6 +9,7 @@ declare(strict_types=1);
 // We are going to use session variables so we need to enable sessions
 session_start();
 
+require 'classes/Product.php';
 // Use this function when you need to need an overview of these variables
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
@@ -21,14 +22,24 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
-// TODO: provide some products (you may overwrite the example)
-$products = [
-    ['name' => 'Kitty Catnip', 'price' => 3.75],
-    ['name' => 'Doggo Bone', 'price' => 6.00],
-    ['name' => 'Rolling Stone', 'price' => 12.30],
-    ['name' => 'Flappy bored', 'price' => 7.90],
-    ['name' => 'It\'s-a-rock', 'price' => 33.60],
-];
+// TODO: provide some Products (you may overwrite the example)
+// $Products = [
+//     ['name' => 'Kitty Catnip', 'price' => 3.75],
+//     ['name' => 'Doggo Bone', 'price' => 6.00],
+//     ['name' => 'Rolling Stone', 'price' => 12.30],
+//     ['name' => 'Flappy bored', 'price' => 7.90],
+//     ['name' => 'It\'s-a-rock', 'price' => 33.60],
+// ];
+
+$product = new Product;
+$product->name = 'tiger';
+$product->price = 9001;
+
+var_dump($product);
+
+
+
+
 
 $totalValue = 0;
 
