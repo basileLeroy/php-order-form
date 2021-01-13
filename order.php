@@ -39,18 +39,15 @@
         <?php // Navigation for when you need it ?>
         <?php 
             pre_r($_POST);
-
-            echo  
             //TODO: Analyse If all inputs are true: correct
             $formCorrect = true;
             foreach ($_POST as $key => $input) {
-                var_dump($input);
-                var_dump($input == "");
+
                 if ($input == "") {
                     $formCorrect = false;
                 }
             }
-            var_dump($formCorrect);
+            
             //TODO: If false: Error message
             if ($formCorrect == false) {
                 echo '<div class="alert alert-danger" role="alert">
@@ -99,6 +96,7 @@
                     echo '</p><br>';
                 }
             }
+            
 
             $orderTotal = productprices($products);
             function productprices($item) {
@@ -112,7 +110,7 @@
 
             }
             $totalValue += "$singleOrder";
-            echo $totalValue;
+            
 
             $_SESSION['street'] = $_POST['street'];
 
@@ -253,8 +251,8 @@
                 <?php foreach ($products as $i => $product): ?>
                     <label>
                         <?php // <?p= is equal to <?php echo ?>
-                        <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
-                        &euro; <?= number_format($product['price'], 2) ?>
+                        <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product->name ?> -
+                        &euro; <?= number_format($product->price, 2) ?>
                     </label><br />
                 <?php endforeach; ?>
             </fieldset>

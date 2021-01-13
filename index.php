@@ -22,24 +22,31 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
-// TODO: provide some Products (you may overwrite the example)
-// $Products = [
-//     ['name' => 'Kitty Catnip', 'price' => 3.75],
-//     ['name' => 'Doggo Bone', 'price' => 6.00],
-//     ['name' => 'Rolling Stone', 'price' => 12.30],
-//     ['name' => 'Flappy bored', 'price' => 7.90],
-//     ['name' => 'It\'s-a-rock', 'price' => 33.60],
-// ];
+$product1 = new Product;
+$product1->setProduct('Kitty Catnip', 3.75);
 
-$product = new Product;
-$product->name = 'tiger';
-$product->price = 9001;
+$product2 = new Product;
+$product2->setProduct('Doggo Bone', 6.00);
 
-var_dump($product);
+$product3 = new Product;
+$product3->setProduct('Rolling Stone', 12.30);
 
+$product4 = new Product;
+$product4->setProduct('Rolling Stone', 7.90);
 
+$product5 = new Product;
+$product5->setProduct('It\'s-a-rock', 33.60);
 
 
+$products = [ 
+    $product1,
+    $product2,
+    $product3,
+    $product4,
+    $product5,
+];
+
+// var_dump($products[0]->price);
 
 $totalValue = 0;
 
