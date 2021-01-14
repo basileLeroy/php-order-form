@@ -38,7 +38,7 @@
         <h1>Place your order</h1>
         <?php // Navigation for when you need it ?>
         <?php 
-            pre_r($_POST);
+            
             //TODO: Analyse If all inputs are true: correct
             $formCorrect = true;
             foreach ($_POST as $key => $input) {
@@ -87,30 +87,30 @@
                 }
             }
 
+            // Printing the class object instead
             function bucketList($item) {
                 $array = $_POST['products'];
 
                 foreach ($array as $index => $value) {
                     echo '<p class="mb-0" >';
-                    print_r($item[$index]['name']);
+                    print_r($item[$index]->name);
                     echo '</p><br>';
                 }
             }
-            
 
-            $orderTotal = productprices($products);
-            function productprices($item) {
-                $array = $_POST['products'];
-                $singleOrder = "";
+            //TODO: Working on the total price value
 
-                foreach ($array as $index => $value) {
-                    print_r($item[$index]['price']);
-                    return $singleOrder;
-                }
+            // $orderTotal = productprices($products);
+            // function productprices($item) {
+            //     $array = $_POST['products'];
+            //     $singleOrder = "";
 
-            }
-            $totalValue += "$singleOrder";
-            
+            //     foreach ($array as $index => $value) {
+            //         print_r($item[$index]->price);
+            //         return $singleOrder;
+            //     }
+
+            // }
 
             $_SESSION['street'] = $_POST['street'];
 
